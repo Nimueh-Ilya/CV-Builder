@@ -1,7 +1,15 @@
+import { useState } from "react";
+import InputDetails from "./InputDetails";
+
 export default function MainContainer() {
+  const [inputValue, setInputValue] = useState("");
   return (
     <>
-      <h1> Build your CV</h1>
+      <InputDetails
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      ></InputDetails>
+      <p>{inputValue}</p>
     </>
   );
 }

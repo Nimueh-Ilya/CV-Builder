@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { ChangeEvent } from "react";
 
-export default function InputDetails() {
-  const [inputValue, setInputValue] = useState("");
-  function changeToInput(e) {
+interface InputDetailsProps {
+  inputValue: string;
+  setInputValue: (value: string) => void;
+}
+export default function InputDetails({
+  inputValue,
+  setInputValue,
+}: InputDetailsProps) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInputValue(e.target.value);
   }
   return (
     <>
-      <input></input>
+      <input value={inputValue} onChange={handleChange}></input>
     </>
   );
 }
