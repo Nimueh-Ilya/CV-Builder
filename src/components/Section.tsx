@@ -11,6 +11,9 @@ export default function CVSection({
   return (
     <>
       <h2>{sectionTitle}</h2>
+      <div className="relative flex py-5 items-center">
+        <div className="flex-grow border-t border-gray-400"></div>
+      </div>
       {childComponent}
     </>
   );
