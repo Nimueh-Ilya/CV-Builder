@@ -9,7 +9,7 @@ export default function MainContainer() {
         inputValue={inputValue}
         setInputValue={setInputValue}
       ></InputDetails>
-      <div>
+      {/* <div>
         <section>
           <h1>Name and Surname</h1>
           <p>City,Country | phone-number | Email Address</p>
@@ -33,7 +33,7 @@ export default function MainContainer() {
           <h2>Skills</h2>
           <p>Skills Component</p>
         </section>
-      </div>
+      </div> */}
     </>
   );
 }
