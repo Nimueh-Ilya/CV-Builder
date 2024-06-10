@@ -1,19 +1,26 @@
 import { ChangeEvent } from "react";
-
 interface InputDetailsProps {
+  label: string;
   inputValue: string;
-  setInputValue: (value: string) => void;
+  onChange: (value: string) => void;
 }
+
 export default function InputDetails({
+  label,
   inputValue,
-  setInputValue,
+  onChange,
 }: InputDetailsProps) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setInputValue(e.target.value);
+    onChange(e.target.value);
   }
   return (
     <>
-      <input value={inputValue} onChange={handleChange}></input>
+      <div>
+        <label>
+          {label}
+          <input value={inputValue} onChange={handleChange}></input>
+        </label>
+      </div>
     </>
   );
 }
