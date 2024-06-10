@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 interface InputDetailsProps {
   label: string;
   inputValue: string;
-  onChange: (value: string) => void;
+  onChange: (key: string, value: string) => void;
 }
 
 export default function InputDetails({
@@ -11,7 +11,7 @@ export default function InputDetails({
   onChange,
 }: InputDetailsProps) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    onChange(e.target.value);
+    onChange(label, e.target.value);
   }
   return (
     <>
