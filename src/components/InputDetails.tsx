@@ -18,7 +18,11 @@ export default function InputDetails({
       <div>
         <label>
           {label}
-          <input value={inputValue} onChange={handleChange}></input>
+          <input
+            className="text-white"
+            value={inputValue}
+            onChange={handleChange}
+          ></input>
         </label>
       </div>
     </>

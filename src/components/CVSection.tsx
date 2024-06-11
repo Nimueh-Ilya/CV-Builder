@@ -1,18 +1,18 @@
 import JobExperience from "./Experience";
-interface CVSectionProps {
+interface CVExperienceProps {
   companyName: string;
   role: string;
   dateFrom: string;
   dateTo: string;
   experienceArray: string[];
 }
-export default function CVSection({
+export default function CVExperience({
   companyName,
   role,
   dateFrom,
   dateTo,
   experienceArray,
-}: CVSectionProps) {
+}: CVExperienceProps) {
   return (
     <>
       <section>
