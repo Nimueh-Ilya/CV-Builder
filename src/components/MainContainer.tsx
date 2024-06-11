@@ -9,20 +9,22 @@ export default function MainContainer() {
   const handleCvInfo = (key: string, value: string) => {
     const newCvInfo = { ...cvInfo, [key]: value };
     setcvInfo(newCvInfo);
-    console.log(cvInfo);
   };
   return (
     <>
-      <InputDetails
-        label="FirstName"
-        inputValue={cvInfo["FirstName"] || ""}
-        onChange={handleCvInfo}
-      ></InputDetails>
-      <InputDetails
-        label="LastName"
-        inputValue={cvInfo["LastName"] || ""}
-        onChange={handleCvInfo}
-      ></InputDetails>
+      <div className="flex gap-4">
+        {" "}
+        <InputDetails
+          label="FirstName"
+          inputValue={cvInfo["FirstName"] || ""}
+          onChange={handleCvInfo}
+        ></InputDetails>
+        <InputDetails
+          label="LastName"
+          inputValue={cvInfo["LastName"] || ""}
+          onChange={handleCvInfo}
+        ></InputDetails>
+      </div>
     </>
   );
 }

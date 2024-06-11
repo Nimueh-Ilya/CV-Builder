@@ -19,7 +19,7 @@ export default function InputDetails({
         <label>
           {label}
           <input
-            className="text-white"
+            className="text-white ml-3"
             value={inputValue}
             onChange={handleChange}
           ></input>
