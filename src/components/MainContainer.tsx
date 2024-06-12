@@ -1,7 +1,8 @@
 import { useState } from "react";
 import InputDetails from "./InputDetails";
 import CVSection from "./Section";
-import Headers from "./Header";
+import { CVHeader } from "./Header";
+import { headerInfo } from "../data/headerInfo";
 interface cvInfo {
   [key: string]: string;
 }
@@ -12,6 +13,7 @@ export default function MainContainer() {
     const newCvInfo = { ...cvInfo, [key]: value };
     setcvInfo(newCvInfo);
   };
+
   return (
     <>
       <div className="flex gap-4 justify-between">
@@ -29,14 +31,7 @@ export default function MainContainer() {
         </div>
         <div>
           <CVSection sectionTitle={""}>
-            <Headers
-              firstName={""}
-              lastName={""}
-              country={""}
-              state={""}
-              phoneNumber={""}
-              email={""}
-            />
+            <CVHeader {...{ headerInfo }} />
           </CVSection>
         </div>
       </div>
