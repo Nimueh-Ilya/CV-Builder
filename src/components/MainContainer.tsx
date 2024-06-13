@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputDetails from "./InputDetails";
 // import CVSection from "./Section";
 import { CVHeader } from "./Header";
+import { CVContainer } from "./CVContainer";
 import { headerInfo } from "../data/headerInfo";
 interface cvInfo {
   [key: string]: string;
@@ -9,9 +10,13 @@ interface cvInfo {
 
 export default function MainContainer() {
   const [cvInfo, setcvInfo] = useState<cvInfo>({});
+  const [renderCV, setrenderCV] = useState(false);
   const handleCvInfo = (key: string, value: string) => {
     const newCvInfo = { ...cvInfo, [key]: value };
     setcvInfo(newCvInfo);
+  };
+  const handleRenderCV = () => {
+    renderCV ? setrenderCV(false) : setrenderCV(true);
   };
 
   return (
@@ -53,8 +58,12 @@ export default function MainContainer() {
             label="Skills"
             onChange={handleCvInfo}
           ></InputDetails>
+          <button onClick={handleRenderCV}>Load Resume</button>
         </div>
-        <CVHeader {...{ headerInfo }} />
+        <CVContainer renderCV={renderCV}>
+          <CVHeader {...{ headerInfo }} />
+        </CVContainer>
+
         <div></div>
       </div>
     </>
