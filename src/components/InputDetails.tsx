@@ -14,17 +14,17 @@ export default function InputDetails({
     onChange(label, e.target.value);
   }
   return (
-    <>
+    <div className="flex flex-row gap-1 justify-between">
       <div>
-        <label>
-          {label}
-          <input
-            className="text-white ml-3"
-            value={inputValue}
-            onChange={handleChange}
-          ></input>
-        </label>
+        <label>{label}:</label>
       </div>
-    </>
+      <div>
+        <input
+          className="text-white ml-3"
+          value={inputValue}
+          onChange={handleChange}
+        ></input>
+      </div>
+    </div>
   );
 }

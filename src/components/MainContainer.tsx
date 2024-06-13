@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputDetails from "./InputDetails";
-import CVSection from "./Section";
+// import CVSection from "./Section";
 import { CVHeader } from "./Header";
 import { headerInfo } from "../data/headerInfo";
 interface cvInfo {
@@ -28,12 +28,34 @@ export default function MainContainer() {
             inputValue={cvInfo["LastName"] || ""}
             onChange={handleCvInfo}
           ></InputDetails>
+          <InputDetails
+            inputValue={cvInfo["Summary"] || ""}
+            label="Summary"
+            onChange={handleCvInfo}
+          ></InputDetails>
+          <InputDetails
+            inputValue={cvInfo["Education"] || ""}
+            label="Education"
+            onChange={handleCvInfo}
+          ></InputDetails>
+          <InputDetails
+            inputValue={cvInfo["Experience"] || ""}
+            label="Experience"
+            onChange={handleCvInfo}
+          ></InputDetails>
+          <InputDetails
+            inputValue={cvInfo["Projects"] || ""}
+            label="Projects"
+            onChange={handleCvInfo}
+          ></InputDetails>
+          <InputDetails
+            inputValue={cvInfo["Skills"] || ""}
+            label="Skills"
+            onChange={handleCvInfo}
+          ></InputDetails>
         </div>
-        <div>
-          <CVSection sectionTitle={""}>
-            <CVHeader {...{ headerInfo }} />
-          </CVSection>
-        </div>
+        <CVHeader {...{ headerInfo }} />
+        <div></div>
       </div>
     </>
   );
