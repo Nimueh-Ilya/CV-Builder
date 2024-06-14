@@ -25,35 +25,42 @@ export default function MainContainer() {
         <div className="flex flex-col gap-2">
           <InputDetails
             label="FirstName"
+            type="input"
             inputValue={cvInfo["FirstName"] || ""}
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
             label="LastName"
+            type="input"
             inputValue={cvInfo["LastName"] || ""}
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
+            type="textarea"
             inputValue={cvInfo["Summary"] || ""}
             label="Summary"
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
+            type="textarea"
             inputValue={cvInfo["Education"] || ""}
             label="Education"
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
+            type="textarea"
             inputValue={cvInfo["Experience"] || ""}
             label="Experience"
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
+            type="textarea"
             inputValue={cvInfo["Projects"] || ""}
             label="Projects"
             onChange={handleCvInfo}
           ></InputDetails>
           <InputDetails
+            type="textarea"
             inputValue={cvInfo["Skills"] || ""}
             label="Skills"
             onChange={handleCvInfo}
