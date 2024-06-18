@@ -3,6 +3,7 @@ interface InputSectionProps {
   title: string;
   children: ReactNode;
 }
+
 export function InputSection({ title, children }: InputSectionProps) {
   const [renderInput, toggleInput] = useState(false);
   const handleRenderInput = () => {
@@ -17,4 +18,7 @@ export function InputSection({ title, children }: InputSectionProps) {
       {renderInput ? <div>{children}</div> : <div></div>}
     </div>
   );
+}
+export function InputTab() {
+  return <div></div>;
 }
