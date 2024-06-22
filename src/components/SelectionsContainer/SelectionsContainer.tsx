@@ -1,3 +1,7 @@
 export function SelectionsContainer() {
-  return <></>;
+  return (
+    <>
+      <div className="flex-1"></div>
+    </>
+  );
 }

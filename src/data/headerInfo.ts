@@ -2,7 +2,7 @@ export const headerInfo = {
   firstName: "Aymen",
   lastName: "Loudiy",
   country: "Canada",
-  state: "Ontario",
+  state: "ON",
   phoneNumber: "+212770384367",
   email: "loudiyaymen@gmail.com",
 };
