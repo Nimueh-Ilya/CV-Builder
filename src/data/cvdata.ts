@@ -8,6 +8,7 @@ interface cvdata {
     email: string;
   };
   experienceList: string[];
+  skillsList: string[];
 }
 export const cvdata: cvdata = {
   headerInfo: {
@@ -24,5 +25,15 @@ export const cvdata: cvdata = {
     "Meet with potential clients to pitch mobile app technologies, increasing client base by 24% within two years",
     "Prepare reports using project management software to ensure projects remain on track",
     "Monitor teams' progress and present information to key stakeholders for updates",
+  ],
+  skillsList: [
+    "Project management software",
+    "Attention to detail",
+    "Project management",
+    "Mobile technology",
+    "Budgeting",
+    "Presentation",
+    "Communication",
+    "Leadership",
   ],
 };
