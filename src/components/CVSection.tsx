@@ -7,8 +7,8 @@ interface CVSectionProps {
 export function CVSection({ title, children }: CVSectionProps) {
   if (title && children) {
     return (
-      <div>
-        <h1>{title}</h1>
+      <div className="[&>*]:pb-3">
+        <h1 className="text-3xl font-bold">{title}</h1>
         <div className="flex-grow border-t text-gray-400"></div>
         <div>{children}</div>
       </div>
@@ -16,7 +16,7 @@ export function CVSection({ title, children }: CVSectionProps) {
   }
   return (
     <>
-      <h1>Title</h1>
+      <h1 className="text-3xl font-bold">Title</h1>
       <div className="flex-grow border-t text-gray-400"></div>
       <p>
         Motivated and energetic Project Manager with three years of experience
