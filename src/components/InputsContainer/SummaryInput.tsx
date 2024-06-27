@@ -1,5 +1,5 @@
 import { InputElement } from "./InputElement";
-export function InputSummary() {
+export function SummaryInput() {
   return (
     <div>
       <InputElement title="Summary" />
