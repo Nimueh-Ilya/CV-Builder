@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface inputSectionProps {
+interface InputSectionProps {
   title?: string;
   children?: ReactNode;
 }
-export function inputSection({ title, children }: inputSectionProps) {
+export function InputSection({ title, children }: InputSectionProps) {
   return (
     <div>
       <h2>{title}</h2>
