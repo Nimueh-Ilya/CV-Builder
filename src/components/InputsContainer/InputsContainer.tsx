@@ -10,11 +10,10 @@ export function InputsContainer() {
         <InputSection title="Summary">
           <SummaryInput></SummaryInput>
         </InputSection>
-        <InputSection>
+        <InputSection title="Education">
           <EducationInput></EducationInput>
         </InputSection>
-        <InputSection></InputSection>
-        <InputSection>
+        <InputSection title="Experience">
           <ExperienceInput></ExperienceInput>
         </InputSection>
       </div>
