@@ -2,6 +2,7 @@ import { InputSection } from "./InputSection";
 import { SummaryInput } from "./SummaryInput";
 import { EducationInput } from "./EducationInput";
 import { ExperienceInput } from "./ExperienceInput";
+import { SkillsInput } from "./SkillsInput";
 
 export function InputsContainer() {
   return (
@@ -15,6 +16,9 @@ export function InputsContainer() {
         </InputSection>
         <InputSection title="Experience">
           <ExperienceInput></ExperienceInput>
+        </InputSection>
+        <InputSection title="Skills">
+          <SkillsInput></SkillsInput>
         </InputSection>
       </div>
     </>

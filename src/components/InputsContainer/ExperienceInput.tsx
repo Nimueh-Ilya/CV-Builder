@@ -48,7 +48,7 @@ export function ExperienceInput() {
         ))}
       </ul>
       <div>
-        <button onClick={addComponent}>Add a bullet point</button>
+        <button onClick={addComponent}>+</button>
       </div>
     </div>
   );
