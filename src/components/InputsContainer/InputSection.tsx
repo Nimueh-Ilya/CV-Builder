@@ -10,6 +10,9 @@ export function InputSection({ title, children }: InputSectionProps) {
       <h2>{title}</h2>
       <p>Please input your {title}</p>
       <div>{children}</div>
+      <div>
+        <button>Submit</button>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { InputElement } from "./InputElement";
 export function SummaryInput() {
   return (
     <div>
-      <InputElement title="Summary" />
+      <InputElement label="Summary" />
     </div>
   );
 }

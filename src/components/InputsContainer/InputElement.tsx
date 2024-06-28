@@ -1,18 +1,15 @@
 interface InputElementProps {
-  title: string;
+  label: string;
 }
 
-export function InputElement({ title }: InputElementProps) {
+export function InputElement({ label }: InputElementProps) {
   return (
     <div>
       <div>
-        <label htmlFor={title}>
-          {title}
-          <input name={title} type="text" />
+        <label htmlFor={label}>
+          {label}
+          <input name={label} type="text" />
         </label>
-      </div>
-      <div>
-        <button>Submit</button>
       </div>
     </div>
   );
