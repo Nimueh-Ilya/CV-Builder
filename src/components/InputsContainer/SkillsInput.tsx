@@ -6,7 +6,7 @@ interface SkillProps {
 }
 function Skill({ index, removeInput }: SkillProps) {
   return (
-    <div>
+    <div className="flex justify-between items-stretch gap-2">
       <InputElement label={`Skill ${index + 1}`} />
       <button onClick={() => removeInput(index)}>X</button>
     </div>
@@ -28,14 +28,16 @@ export function SkillsInput() {
     ]);
   };
   return (
-    <div>
-      <ul>
+    <div className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-2">
         {componentIndex.map((_, index) => (
           <Skill key={index} index={index} removeInput={removeComponent} />
         ))}
       </ul>
-      <div>
-        <button onClick={addComponent}>+</button>
+      <div className="flex">
+        <button className="flex-grow" onClick={addComponent}>
+          +
+        </button>
       </div>
     </div>
   );

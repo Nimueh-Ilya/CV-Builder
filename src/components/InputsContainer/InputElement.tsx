@@ -4,13 +4,11 @@ interface InputElementProps {
 
 export function InputElement({ label }: InputElementProps) {
   return (
-    <div>
-      <div>
-        <label htmlFor={label}>
-          {label}
-          <input name={label} type="text" />
-        </label>
-      </div>
+    <div className="grow flex align-middle gap-1 ">
+      <label className="self-center" htmlFor={label.split(" ").join("")}>
+        {label}
+      </label>
+      <input className="grow" id={label.split(" ").join("")} type="text" />
     </div>
   );
 }
