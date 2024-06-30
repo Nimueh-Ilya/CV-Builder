@@ -1,3 +1,4 @@
+//TODO: Move the Input value from the input component to the parent component
 import { useState } from "react";
 
 interface InputElementProps {

@@ -1,3 +1,4 @@
+// TODO: Put all entries in localStorage
 import { InputSection } from "./InputSection";
 import { SummaryInput } from "./SummaryInput";
 import { EducationInput } from "./EducationInput";
