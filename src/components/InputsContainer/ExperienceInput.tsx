@@ -3,13 +3,17 @@ import { InputElement } from "./InputElement";
 
 interface BulletPointProps {
   index: number;
+  pushData: (data: { [key: string]: string }) => void;
   removeInput: (index: number) => void;
 }
 
-function BulletPoint({ index, removeInput }: BulletPointProps) {
+function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
   return (
     <div>
-      <InputElement label="BulletPoint" />
+      <InputElement
+        childToParent={pushData}
+        label={`Bullet Point ${index + 1}`}
+      />
       <button onClick={() => removeInput(index)}>X</button>
     </div>
   );
@@ -17,7 +21,17 @@ function BulletPoint({ index, removeInput }: BulletPointProps) {
 
 export function ExperienceInput() {
   const [components, setComponents] = useState<number[]>([0]);
-
+  const [experienceData, setExperienceData] = useState({});
+  const pushData = (data: object) => {
+    const nextData = { ...experienceData, ...data };
+    setExperienceData(nextData);
+    console.log(experienceData);
+  };
+  const pushFormatedData = (data: object) => {
+    const BulletPoints = { ...data };
+    const nextData = { ...experienceData, BulletPoints };
+    setExperienceData(nextData);
+  };
   const removeComponent = (index: number) => {
     setComponents((prevComponents) =>
       prevComponents.filter((_, i) => i !== index)
@@ -34,16 +48,20 @@ export function ExperienceInput() {
   return (
     <div>
       <div>
-        <InputElement label="Company" />
-        <InputElement label="Role" />
-        <InputElement label="StartDate" />
-        <InputElement label="EndDate" />
+        <InputElement childToParent={pushData} label="Company" />
+        <InputElement childToParent={pushData} label="Role" />
+        <InputElement childToParent={pushData} label="StartDate" />
+        <InputElement childToParent={pushData} label="EndDate" />
       </div>
 
       <ul>
         {components.map((_, index) => (
           <li key={index}>
-            <BulletPoint index={index} removeInput={removeComponent} />
+            <BulletPoint
+              pushData={pushFormatedData}
+              index={index}
+              removeInput={removeComponent}
+            />
           </li>
         ))}
       </ul>

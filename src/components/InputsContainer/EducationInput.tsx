@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { InputElement } from "./InputElement";
 export function EducationInput() {
+  const [educationData, setEducationData] = useState({});
+  const pushData = (data: object) => {
+    const nextData = { ...educationData, ...data };
+    setEducationData(nextData);
+    console.log(educationData);
+  };
   return (
     <>
-      <InputElement label="School"></InputElement>
-      <InputElement label="Degree"></InputElement>
+      <InputElement label="School" childToParent={pushData}></InputElement>
+      <InputElement label="Degree" childToParent={pushData}></InputElement>
     </>
   );
 }
