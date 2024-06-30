@@ -18,19 +18,36 @@ function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
     </div>
   );
 }
-
 export function ExperienceInput() {
   const [components, setComponents] = useState<number[]>([0]);
-  const [experienceData, setExperienceData] = useState({});
+  const [experienceData, setExperienceData] = useState<{
+    [key: string]: string | { [key: string]: string }[];
+  }>({ BulletPoints: [] });
   const pushData = (data: object) => {
     const nextData = { ...experienceData, ...data };
     setExperienceData(nextData);
     console.log(experienceData);
   };
-  const pushFormatedData = (data: object) => {
-    const BulletPoints = { ...data };
-    const nextData = { ...experienceData, BulletPoints };
-    setExperienceData(nextData);
+  const pushFormatedData = (data: { [key: string]: string }) => {
+    if (
+      Array.isArray(experienceData.BulletPoints) &&
+      experienceData.BulletPoints.some(
+        (item) => JSON.stringify(item) === JSON.stringify(data)
+      )
+    ) {
+      return;
+    }
+    setExperienceData((prevData) => {
+      const updatedBulletPoints = [
+        ...(prevData.BulletPoints as { [key: string]: string }[]),
+      ];
+      const newIndex = prevData.BulletPoints.length;
+      updatedBulletPoints[newIndex] = {
+        ...updatedBulletPoints[newIndex],
+        ...data,
+      };
+      return { ...prevData, BulletPoints: updatedBulletPoints };
+    });
   };
   const removeComponent = (index: number) => {
     setComponents((prevComponents) =>
