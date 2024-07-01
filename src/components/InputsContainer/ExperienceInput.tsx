@@ -26,7 +26,6 @@ export function ExperienceInput() {
   const pushData = (data: object) => {
     const nextData = { ...experienceData, ...data };
     setExperienceData(nextData);
-    console.log(experienceData);
   };
   const pushFormatedData = (data: { [key: string]: string }) => {
     if (

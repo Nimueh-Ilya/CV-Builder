@@ -5,7 +5,6 @@ export function EducationInput() {
   const pushData = (data: object) => {
     const nextData = { ...educationData, ...data };
     setEducationData(nextData);
-    console.log(educationData);
   };
   return (
     <>
