@@ -24,8 +24,8 @@ export function InputElement({ label, childToParent }: InputElementProps) {
   };
   return (
     <div className="grow flex align-middle gap-1 ">
-      <label className="self-center" htmlFor={label.split(" ").join("")}>
-        {label}
+      <label className="self-center w-1/5" htmlFor={label.split(" ").join("")}>
+        {label}:
       </label>
       <input
         onChange={(e) => inputChange(e.target.value)}

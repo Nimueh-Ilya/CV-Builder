@@ -9,12 +9,9 @@ interface BulletPointProps {
 
 function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
   return (
-    <div>
-      <InputElement
-        childToParent={pushData}
-        label={`Bullet Point ${index + 1}`}
-      />
-      <button onClick={() => removeInput(index)}>X</button>
+    <div className="flex justify-between items-stretch gap-2">
+      <InputElement childToParent={pushData} label={`Point ${index + 1}`} />
+      <button onClick={() => removeInput(index)}>-</button>
     </div>
   );
 }
@@ -63,14 +60,14 @@ export function ExperienceInput() {
 
   return (
     <div>
-      <div>
+      <div className="flex flex-col gap-1">
         <InputElement childToParent={pushData} label="Company" />
         <InputElement childToParent={pushData} label="Role" />
         <InputElement childToParent={pushData} label="StartDate" />
         <InputElement childToParent={pushData} label="EndDate" />
       </div>
-
-      <ul>
+      <div className="ml-1 m-4 ">Bullet Points</div>
+      <ul className="flex flex-col gap-1 m-1 ml-4">
         {components.map((_, index) => (
           <li key={index}>
             <BulletPoint
@@ -81,8 +78,10 @@ export function ExperienceInput() {
           </li>
         ))}
       </ul>
-      <div>
-        <button onClick={addComponent}>+</button>
+      <div className="flex">
+        <button className="grow" onClick={addComponent}>
+          +
+        </button>
       </div>
     </div>
   );

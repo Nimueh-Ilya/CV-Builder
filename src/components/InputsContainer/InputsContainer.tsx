@@ -9,7 +9,12 @@ export function InputsContainer() {
   return (
     <>
       <div className="flex-1">
-        <h1 className="text-2 xl">Add entries to your collection</h1>
+        <div className="flex justify-center items-center">
+          <h1 className="text-2 xl text-center">
+            Add entries to your collection
+          </h1>
+        </div>
+
         <InputSection title="Summary">
           <SummaryInput></SummaryInput>
         </InputSection>
