@@ -6,6 +6,9 @@ interface BulletPointProps {
   pushData: (data: { [key: string]: string }) => void;
   removeInput: (index: number) => void;
 }
+interface ExperienceInputProps {
+  changeLocalData: (data: unknown) => void;
+}
 
 function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
   return (
@@ -15,7 +18,7 @@ function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
     </div>
   );
 }
-export function ExperienceInput() {
+export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
   const [components, setComponents] = useState<number[]>([0]);
   const [experienceData, setExperienceData] = useState<{
     [key: string]: string | { [key: string]: string }[];
@@ -46,6 +49,8 @@ export function ExperienceInput() {
     });
   };
   const removeComponent = (index: number) => {
+    if (Array.isArray(experienceData.BulletPoints))
+      experienceData.BulletPoints.splice(index, 1);
     setComponents((prevComponents) =>
       prevComponents.filter((_, i) => i !== index)
     );
@@ -82,6 +87,13 @@ export function ExperienceInput() {
         <button className="grow" onClick={addComponent}>
           +
         </button>
+      </div>
+      <div
+        onClick={() => {
+          changeLocalData(experienceData);
+        }}
+      >
+        Submit
       </div>
     </div>
   );

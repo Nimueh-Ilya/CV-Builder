@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface InputSectionProps {
   title?: string;
-  children?: ReactNode;
+  children: ReactNode;
 }
 export function InputSection({ title, children }: InputSectionProps) {
   return (
@@ -12,9 +12,6 @@ export function InputSection({ title, children }: InputSectionProps) {
       </div>
 
       <div className="flex flex-col gap-1">{children}</div>
-      <div>
-        <button>Submit</button>
-      </div>
     </div>
   );
 }

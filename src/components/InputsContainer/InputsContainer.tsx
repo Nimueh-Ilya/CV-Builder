@@ -4,8 +4,14 @@ import { SummaryInput } from "./SummaryInput";
 import { EducationInput } from "./EducationInput";
 import { ExperienceInput } from "./ExperienceInput";
 import { SkillsInput } from "./SkillsInput";
+import { useState } from "react";
 
 export function InputsContainer() {
+  const [localData, setLocalData] = useState({});
+  const changeLocalData = (newData: unknown) => {
+    const data = { ...localData, newData };
+    setLocalData(data);
+  };
   return (
     <>
       <div className="flex-1">
@@ -16,16 +22,16 @@ export function InputsContainer() {
         </div>
 
         <InputSection title="Summary">
-          <SummaryInput></SummaryInput>
+          <SummaryInput changeLocalData={changeLocalData}></SummaryInput>
         </InputSection>
         <InputSection title="Education">
-          <EducationInput></EducationInput>
+          <EducationInput changeLocalData={changeLocalData}></EducationInput>
         </InputSection>
         <InputSection title="Experience">
-          <ExperienceInput></ExperienceInput>
+          <ExperienceInput changeLocalData={changeLocalData}></ExperienceInput>
         </InputSection>
         <InputSection title="Skills">
-          <SkillsInput></SkillsInput>
+          <SkillsInput changeLocalData={changeLocalData}></SkillsInput>
         </InputSection>
       </div>
     </>

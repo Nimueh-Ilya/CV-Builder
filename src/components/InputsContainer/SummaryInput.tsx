@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { InputElement } from "./InputElement";
-export function SummaryInput() {
+interface SummaryInputProps {
+  changeLocalData: (data: unknown) => void;
+}
+export function SummaryInput({ changeLocalData }: SummaryInputProps) {
   const [summaryData, setSummaryData] = useState({});
   const pushData = (data: object) => {
     const nextData = { ...summaryData, ...data };
@@ -9,6 +12,17 @@ export function SummaryInput() {
   return (
     <div>
       <InputElement label="Summary" childToParent={pushData} />
+      <div>
+        <div>
+          <button
+            onClick={() => {
+              changeLocalData(summaryData);
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
