@@ -22,14 +22,14 @@ function Skill({ index, removeInput, pushData }: SkillProps) {
 
 export function SkillsInput({ changeLocalData }: SkillsInputProps) {
   const [componentIndex, setComponentIndex] = useState<number[]>([0]);
-  const [skillData, setSkillData] = useState<SkillData>({});
+  const [skillData, setSkillData] = useState<SkillData[]>([]);
   const pushData = (data: unknown) => {
-    const nextData = { ...(skillData as object), ...(data as object) };
+    const nextData = [...skillData];
+    nextData.push(data as SkillData);
     setSkillData(nextData);
   };
   const removeComponent = (index: number) => {
-    const key = Object.keys(skillData)[index];
-    delete skillData[key];
+    skillData.splice(index, 1);
     setComponentIndex((prevComponents) =>
       prevComponents.filter((_, i) => i !== index)
     );
