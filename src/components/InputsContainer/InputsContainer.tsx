@@ -8,9 +8,14 @@ import { useState } from "react";
 
 export function InputsContainer() {
   const [localData, setLocalData] = useState({});
+  const [refresh, setRefresh] = useState(false);
+
   const changeLocalData = (newData: unknown) => {
     const data = { ...localData, newData };
     setLocalData(data);
+  };
+  const switchRefresh = () => {
+    setRefresh(!refresh);
   };
   return (
     <>
@@ -19,19 +24,32 @@ export function InputsContainer() {
           <h1 className="text-2 xl text-center">
             Add entries to your collection
           </h1>
+          <button onClick={switchRefresh}>O</button>
         </div>
 
         <InputSection title="Summary">
-          <SummaryInput changeLocalData={changeLocalData}></SummaryInput>
+          <SummaryInput
+            changeLocalData={changeLocalData}
+            refresh={refresh}
+          ></SummaryInput>
         </InputSection>
         <InputSection title="Education">
-          <EducationInput changeLocalData={changeLocalData}></EducationInput>
+          <EducationInput
+            refresh={refresh}
+            changeLocalData={changeLocalData}
+          ></EducationInput>
         </InputSection>
         <InputSection title="Experience">
-          <ExperienceInput changeLocalData={changeLocalData}></ExperienceInput>
+          <ExperienceInput
+            refresh={refresh}
+            changeLocalData={changeLocalData}
+          ></ExperienceInput>
         </InputSection>
         <InputSection title="Skills">
-          <SkillsInput changeLocalData={changeLocalData}></SkillsInput>
+          <SkillsInput
+            refresh={refresh}
+            changeLocalData={changeLocalData}
+          ></SkillsInput>
         </InputSection>
       </div>
     </>

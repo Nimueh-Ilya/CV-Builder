@@ -5,20 +5,34 @@ interface BulletPointProps {
   index: number;
   pushData: (data: { [key: string]: string }) => void;
   removeInput: (index: number) => void;
+  refresh: boolean;
 }
 interface ExperienceInputProps {
   changeLocalData: (data: unknown) => void;
+  refresh: boolean;
 }
 
-function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
+function BulletPoint({
+  index,
+  removeInput,
+  pushData,
+  refresh,
+}: BulletPointProps) {
   return (
     <div className="flex justify-between items-stretch gap-2">
-      <InputElement childToParent={pushData} label={`Point ${index + 1}`} />
+      <InputElement
+        refresh={refresh}
+        childToParent={pushData}
+        label={`Point ${index + 1}`}
+      />
       <button onClick={() => removeInput(index)}>-</button>
     </div>
   );
 }
-export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
+export function ExperienceInput({
+  changeLocalData,
+  refresh,
+}: ExperienceInputProps) {
   const [components, setComponents] = useState<number[]>([0]);
   const [experienceData, setExperienceData] = useState<{
     [key: string]: string | { [key: string]: string }[];
@@ -66,16 +80,29 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
   return (
     <div>
       <div className="flex flex-col gap-1">
-        <InputElement childToParent={pushData} label="Company" />
-        <InputElement childToParent={pushData} label="Role" />
-        <InputElement childToParent={pushData} label="StartDate" />
-        <InputElement childToParent={pushData} label="EndDate" />
+        <InputElement
+          refresh={refresh}
+          childToParent={pushData}
+          label="Company"
+        />
+        <InputElement refresh={refresh} childToParent={pushData} label="Role" />
+        <InputElement
+          refresh={refresh}
+          childToParent={pushData}
+          label="StartDate"
+        />
+        <InputElement
+          refresh={refresh}
+          childToParent={pushData}
+          label="EndDate"
+        />
       </div>
       <div className="ml-1 m-4 ">Bullet Points</div>
       <ul className="flex flex-col gap-1 m-1 ml-4">
         {components.map((_, index) => (
           <li key={index}>
             <BulletPoint
+              refresh={refresh}
               pushData={pushFormatedData}
               index={index}
               removeInput={removeComponent}

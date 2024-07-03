@@ -1,22 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface InputElementProps {
   label: string;
-  childToParent?: (data: { [key: string]: string }) => void;
+  childToParent: (data: { [key: string]: string }) => void;
+  refresh: boolean;
 }
 
-export function InputElement({ label, childToParent }: InputElementProps) {
+export function InputElement({
+  label,
+  childToParent,
+  refresh,
+}: InputElementProps) {
   const [valid, setValid] = useState(false);
   const [value, setValue] = useState({});
+
   const validSwitch = () => {
     setValid(!valid);
   };
   const transferToParent = () => {
+    console.log("works");
+    console.log(refresh);
+
     validSwitch();
     if (childToParent) {
       childToParent(value);
     }
   };
+  useEffect(() => {
+    childToParent(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh]);
   const inputChange = (inputVal: string) => {
     const nextVal = { [label.split(" ").join("")]: inputVal };
     setValue(nextVal);
