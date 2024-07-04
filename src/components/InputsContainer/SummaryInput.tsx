@@ -2,9 +2,8 @@ import { useState } from "react";
 import { InputElement } from "./InputElement";
 interface SummaryInputProps {
   changeLocalData: (data: unknown) => void;
-  refresh: boolean;
 }
-export function SummaryInput({ changeLocalData, refresh }: SummaryInputProps) {
+export function SummaryInput({ changeLocalData }: SummaryInputProps) {
   const [summaryData, setSummaryData] = useState({});
   const pushData = (data: object) => {
     const nextData = { ...summaryData, ...data };
@@ -12,11 +11,7 @@ export function SummaryInput({ changeLocalData, refresh }: SummaryInputProps) {
   };
   return (
     <div>
-      <InputElement
-        refresh={refresh}
-        label="Summary"
-        childToParent={pushData}
-      />
+      <InputElement label="Summary" childToParent={pushData} />
       <div>
         <div>
           <button

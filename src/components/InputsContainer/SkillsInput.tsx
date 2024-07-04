@@ -4,34 +4,36 @@ interface SkillProps {
   index: number;
   removeInput: (index: number) => void;
   pushData: (data: unknown) => void;
-  refresh: boolean;
 }
 interface SkillsInputProps {
   changeLocalData: (data: unknown) => void;
-  refresh: boolean;
 }
 interface SkillData {
   [key: string]: string;
 }
-function Skill({ index, removeInput, pushData, refresh }: SkillProps) {
+function sortArray(object1: SkillData, object2: SkillData) {
+  const key1 = Object.keys(object1);
+  const key2 = Object.keys(object2);
+  return key1[0].localeCompare(key2[0]);
+}
+function Skill({ index, removeInput, pushData }: SkillProps) {
   return (
     <div className="flex justify-between items-stretch gap-2">
-      <InputElement
-        refresh={refresh}
-        label={`Skill ${index + 1}`}
-        childToParent={pushData}
-      />
+      <InputElement label={`Skill ${index + 1}`} childToParent={pushData} />
       <button onClick={() => removeInput(index)}>-</button>
     </div>
   );
 }
 
-export function SkillsInput({ changeLocalData, refresh }: SkillsInputProps) {
+export function SkillsInput({ changeLocalData }: SkillsInputProps) {
   const [componentIndex, setComponentIndex] = useState<number[]>([0]);
   const [skillData, setSkillData] = useState<SkillData[]>([]);
   const pushData = (data: unknown) => {
     const nextData = [...skillData];
     nextData.push(data as SkillData);
+    nextData.sort(sortArray);
+    console.log(nextData);
+
     setSkillData(nextData);
   };
   const removeComponent = (index: number) => {
@@ -52,7 +54,6 @@ export function SkillsInput({ changeLocalData, refresh }: SkillsInputProps) {
       <ul className="flex flex-col gap-2 m-1 ml-4">
         {componentIndex.map((_, index) => (
           <Skill
-            refresh={refresh}
             pushData={pushData}
             key={index}
             index={index}
