@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputElement } from "./InputElement";
 interface EducationInputProps {
-  changeLocalData: (data: unknown) => void;
+  changeLocalData: (data: object) => void;
 }
 export function EducationInput({ changeLocalData }: EducationInputProps) {
   const [educationData, setEducationData] = useState({});

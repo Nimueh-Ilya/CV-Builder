@@ -7,7 +7,7 @@ interface BulletPointProps {
   removeInput: (index: number) => void;
 }
 interface ExperienceInputProps {
-  changeLocalData: (data: unknown) => void;
+  changeLocalData: (data: object) => void;
 }
 
 function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
@@ -88,13 +88,13 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
           +
         </button>
       </div>
-      <div
+      <button
         onClick={() => {
           changeLocalData(experienceData);
         }}
       >
         Submit
-      </div>
+      </button>
     </div>
   );
 }

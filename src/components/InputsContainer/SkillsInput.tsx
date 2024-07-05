@@ -6,7 +6,7 @@ interface SkillProps {
   pushData: (data: unknown) => void;
 }
 interface SkillsInputProps {
-  changeLocalData: (data: unknown) => void;
+  changeLocalData: (data: object) => void;
 }
 interface SkillData {
   [key: string]: string;

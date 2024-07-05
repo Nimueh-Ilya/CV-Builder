@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputElement } from "./InputElement";
 interface SummaryInputProps {
-  changeLocalData: (data: unknown) => void;
+  changeLocalData: (data: object) => void;
 }
 export function SummaryInput({ changeLocalData }: SummaryInputProps) {
   const [summaryData, setSummaryData] = useState({});
