@@ -6,14 +6,25 @@ import { EducationInput } from "./EducationInput";
 import { ExperienceInput } from "./ExperienceInput";
 import { SkillsInput } from "./SkillsInput";
 import { useState } from "react";
-
+interface DataObject {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
 export function InputsContainer() {
-  const [localData, setLocalData] = useState<object[]>([]);
-  // function setLocalStorage(data: object) {}
+  const [localData, setLocalData] = useState<DataObject[]>([]);
+  function setLocalStorage(data: object[]) {
+    const titleObject: DataObject = data.find((item) => {
+      "title" in item;
+    })!;
+    if (titleObject && titleObject.title) {
+      const stringData = JSON.stringify({ data });
+      localStorage.setItem(titleObject.title, stringData);
+    }
+  }
   const changeLocalData = (newData: object) => {
     const data: object[] = [...localData, newData];
     setLocalData(data);
-    console.log(localData);
+    setLocalStorage(data);
   };
 
   return (
