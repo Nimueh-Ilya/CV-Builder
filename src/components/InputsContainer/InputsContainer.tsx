@@ -12,19 +12,24 @@ interface DataObject {
 }
 export function InputsContainer() {
   const [localData, setLocalData] = useState<DataObject[]>([]);
-  function setLocalStorage(data: object[]) {
-    const titleObject: DataObject = data.find((item) => {
-      "title" in item;
+
+  function setLocalStorage(data: DataObject[]) {
+    const titleObject = data.find((item) => {
+      return Object.prototype.hasOwnProperty.call(item, "Title");
     })!;
-    if (titleObject && titleObject.title) {
-      const stringData = JSON.stringify({ data });
-      localStorage.setItem(titleObject.title, stringData);
+    console.log(data);
+
+    console.log(titleObject);
+    console.log(titleObject.Title);
+
+    if (titleObject && titleObject.Title) {
+      const stringData = JSON.stringify(data);
+      localStorage.setItem(titleObject.Title, stringData);
     }
   }
   const changeLocalData = (newData: object) => {
     const data: object[] = [...localData, newData];
     setLocalData(data);
-    setLocalStorage(data);
   };
 
   return (
@@ -54,7 +59,7 @@ export function InputsContainer() {
         <div className="flex justify-center align-middle">
           <button
             onClick={() => {
-              console.log("sent");
+              setLocalStorage(localData);
             }}
             className="grow"
           >
