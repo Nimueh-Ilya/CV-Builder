@@ -2,6 +2,7 @@ import { useState } from "react";
 import { InputElement } from "./InputElement";
 interface SkillProps {
   index: number;
+  reset: boolean;
   removeInput: (index: number) => void;
   pushData: (data: unknown) => void;
 }
@@ -16,10 +17,14 @@ function sortArray(object1: SkillData, object2: SkillData) {
   const key2 = Object.keys(object2);
   return key1[0].localeCompare(key2[0]);
 }
-function Skill({ index, removeInput, pushData }: SkillProps) {
+function Skill({ index, removeInput, pushData, reset }: SkillProps) {
   return (
     <div className="flex justify-between items-stretch gap-2">
-      <InputElement label={`Skill ${index + 1}`} childToParent={pushData} />
+      <InputElement
+        reset={reset}
+        label={`Skill ${index + 1}`}
+        childToParent={pushData}
+      />
       <button onClick={() => removeInput(index)}>-</button>
     </div>
   );
@@ -28,11 +33,15 @@ function Skill({ index, removeInput, pushData }: SkillProps) {
 export function SkillsInput({ changeLocalData }: SkillsInputProps) {
   const [componentIndex, setComponentIndex] = useState<number[]>([0]);
   const [skillData, setSkillData] = useState<SkillData[]>([]);
+  const [reset, setReset] = useState(false);
+
+  const switchReset = () => {
+    setReset((prevReset) => !prevReset);
+  };
   const pushData = (data: unknown) => {
     const nextData = [...skillData];
     nextData.push(data as SkillData);
     nextData.sort(sortArray);
-    console.log(nextData);
 
     setSkillData(nextData);
   };
@@ -58,6 +67,7 @@ export function SkillsInput({ changeLocalData }: SkillsInputProps) {
             key={index}
             index={index}
             removeInput={removeComponent}
+            reset={reset}
           />
         ))}
       </ul>
@@ -70,6 +80,7 @@ export function SkillsInput({ changeLocalData }: SkillsInputProps) {
         <button
           onClick={() => {
             changeLocalData(skillData);
+            switchReset();
           }}
         >
           Submit

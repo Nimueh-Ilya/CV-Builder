@@ -5,18 +5,24 @@ interface SummaryInputProps {
 }
 export function SummaryInput({ changeLocalData }: SummaryInputProps) {
   const [summaryData, setSummaryData] = useState({});
+  const [reset, setReset] = useState(false);
+
+  const switchReset = () => {
+    setReset((prevReset) => !prevReset);
+  };
   const pushData = (data: object) => {
     const nextData = { ...summaryData, ...data };
     setSummaryData(nextData);
   };
   return (
     <div>
-      <InputElement label="Summary" childToParent={pushData} />
+      <InputElement reset={reset} label="Summary" childToParent={pushData} />
       <div>
         <div>
           <button
             onClick={() => {
               changeLocalData(summaryData);
+              switchReset();
             }}
           >
             Submit

@@ -1,30 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface InputElementProps {
   label: string;
   childToParent: (data: { [key: string]: string }) => void;
+  reset: boolean;
 }
 
-export function InputElement({ label, childToParent }: InputElementProps) {
+export function InputElement({
+  label,
+  childToParent,
+  reset,
+}: InputElementProps) {
   const [valid, setValid] = useState(false);
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (reset) {
+      setValid(false);
+      setValue("");
+    }
+  }, [reset]);
 
   const validSwitch = () => {
     setValid(!valid);
   };
+
   const transferToParent = () => {
     validSwitch();
     if (childToParent && !valid) {
-      childToParent(value);
+      childToParent({ [label.split(" ").join("")]: value });
     }
   };
 
   const inputChange = (inputVal: string) => {
-    const nextVal = { [label.split(" ").join("")]: inputVal };
-    setValue(nextVal);
+    setValue(inputVal);
   };
+
   return (
-    <div className="grow flex align-middle gap-1 ">
+    <div className="grow flex align-middle gap-1">
       <label className="self-center w-1/5" htmlFor={label.split(" ").join("")}>
         {label}:
       </label>
@@ -33,6 +46,7 @@ export function InputElement({ label, childToParent }: InputElementProps) {
         className="grow"
         id={label.split(" ").join("")}
         type="text"
+        value={value}
       />
       <button onClick={transferToParent}>
         {valid ? <div>✔️</div> : <div>✖️</div>}

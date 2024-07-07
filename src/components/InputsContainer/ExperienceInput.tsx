@@ -3,6 +3,7 @@ import { InputElement } from "./InputElement";
 
 interface BulletPointProps {
   index: number;
+  reset: boolean;
   pushData: (data: { [key: string]: string }) => void;
   removeInput: (index: number) => void;
 }
@@ -10,10 +11,19 @@ interface ExperienceInputProps {
   changeLocalData: (data: object) => void;
 }
 
-function BulletPoint({ index, removeInput, pushData }: BulletPointProps) {
+function BulletPoint({
+  index,
+  removeInput,
+  pushData,
+  reset,
+}: BulletPointProps) {
   return (
     <div className="flex justify-between items-stretch gap-2">
-      <InputElement childToParent={pushData} label={`Point ${index + 1}`} />
+      <InputElement
+        reset={reset}
+        childToParent={pushData}
+        label={`Point ${index + 1}`}
+      />
       <button onClick={() => removeInput(index)}>-</button>
     </div>
   );
@@ -23,6 +33,11 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
   const [experienceData, setExperienceData] = useState<{
     [key: string]: string | { [key: string]: string }[];
   }>({ BulletPoints: [] });
+  const [reset, setReset] = useState(false);
+
+  const switchReset = () => {
+    setReset((prevReset) => !prevReset);
+  };
   const pushData = (data: object) => {
     const nextData = { ...experienceData, ...data };
     setExperienceData(nextData);
@@ -66,10 +81,14 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
   return (
     <div>
       <div className="flex flex-col gap-1">
-        <InputElement childToParent={pushData} label="Company" />
-        <InputElement childToParent={pushData} label="Role" />
-        <InputElement childToParent={pushData} label="StartDate" />
-        <InputElement childToParent={pushData} label="EndDate" />
+        <InputElement reset={reset} childToParent={pushData} label="Company" />
+        <InputElement reset={reset} childToParent={pushData} label="Role" />
+        <InputElement
+          reset={reset}
+          childToParent={pushData}
+          label="StartDate"
+        />
+        <InputElement reset={reset} childToParent={pushData} label="EndDate" />
       </div>
       <div className="ml-1 m-4 ">Bullet Points</div>
       <ul className="flex flex-col gap-1 m-1 ml-4">
@@ -79,6 +98,7 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
               pushData={pushFormatedData}
               index={index}
               removeInput={removeComponent}
+              reset={reset}
             />
           </li>
         ))}
@@ -91,6 +111,7 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
       <button
         onClick={() => {
           changeLocalData(experienceData);
+          switchReset();
         }}
       >
         Submit
