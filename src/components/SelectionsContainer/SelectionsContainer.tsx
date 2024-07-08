@@ -13,6 +13,7 @@ export function SelectionsContainer() {
         <button
           onClick={() => {
             console.log(cvList);
+            console.log("works");
           }}
         >
           get cvs
