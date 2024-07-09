@@ -46,7 +46,10 @@ export function SkillsInput({ changeLocalData }: SkillsInputProps) {
     setSkillData(nextData);
   };
   useEffect(() => {
-    setSkillData([]);
+    if (reset) {
+      setSkillData([]);
+      setReset(false);
+    }
   }, [reset]);
   const removeComponent = (index: number) => {
     skillData.splice(index, 1);

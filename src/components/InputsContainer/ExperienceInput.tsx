@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputElement } from "./InputElement";
 
 interface BulletPointProps {
@@ -39,8 +39,7 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
     setReset((prevReset) => !prevReset);
   };
   const pushData = (data: object) => {
-    const nextData = { ...experienceData, ...data };
-    setExperienceData(nextData);
+    setExperienceData((prevData) => ({ ...prevData, ...data }));
   };
   const pushFormatedData = (data: { [key: string]: string }) => {
     if (
@@ -77,7 +76,12 @@ export function ExperienceInput({ changeLocalData }: ExperienceInputProps) {
       prevComponents.length,
     ]);
   };
-
+  useEffect(() => {
+    if (reset) {
+      setExperienceData((prevData) => ({ ...prevData, BulletPoints: [] }));
+      setReset(false);
+    }
+  }, [reset]);
   return (
     <div>
       <div className="flex flex-col gap-1">
