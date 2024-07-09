@@ -15,10 +15,8 @@ export function InputElement({
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    if (reset) {
-      setValid(false);
-      setValue("");
-    }
+    setValid(false);
+    setValue("");
   }, [reset]);
 
   const validSwitch = () => {

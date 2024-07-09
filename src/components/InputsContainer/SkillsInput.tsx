@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputElement } from "./InputElement";
 interface SkillProps {
   index: number;
@@ -45,6 +45,9 @@ export function SkillsInput({ changeLocalData }: SkillsInputProps) {
 
     setSkillData(nextData);
   };
+  useEffect(() => {
+    setSkillData([]);
+  }, [reset]);
   const removeComponent = (index: number) => {
     skillData.splice(index, 1);
     setComponentIndex((prevComponents) =>

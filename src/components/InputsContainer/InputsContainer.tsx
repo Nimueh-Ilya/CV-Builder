@@ -56,6 +56,7 @@ export function InputsContainer() {
           <button
             onClick={() => {
               setLocalStorage(localData);
+              setLocalData([]);
             }}
             className="grow"
           >
