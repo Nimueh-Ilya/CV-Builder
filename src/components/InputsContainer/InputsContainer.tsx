@@ -18,7 +18,7 @@ export function InputsContainer() {
     })!;
 
     if (titleObject && titleObject.Title) {
-      const stringData = JSON.stringify([data]);
+      const stringData = JSON.stringify(data);
 
       localStorage.setItem(titleObject.Title, stringData);
     }
