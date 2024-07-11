@@ -14,7 +14,7 @@ export function SelectionsContainer() {
   title1;
   cvList;
   return (
-    <>
+    <div className="grow">
       <div>
         <label htmlFor="containers"></label>
         <select name="containers" id="containers">
@@ -27,6 +27,6 @@ export function SelectionsContainer() {
       <div>
         <SelectionContainer itemKey="Summary"></SelectionContainer>
       </div>
-    </>
+    </div>
   );
 }
