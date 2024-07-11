@@ -1,5 +1,5 @@
 // import { useState } from "react";
-
+import SelectionContainer from "./SelectionContainer";
 export function SelectionsContainer() {
   // const [selectedCV, setSelectedCV] = useState({});
   const cvListKeys = Object.keys(localStorage);
@@ -15,7 +15,6 @@ export function SelectionsContainer() {
   cvList;
   return (
     <>
-      <div className="flex-1"></div>
       <div>
         <label htmlFor="containers"></label>
         <select name="containers" id="containers">
@@ -24,6 +23,9 @@ export function SelectionsContainer() {
           <option value="Experience">Experience</option>
           <option value="Skills">Skills</option>
         </select>
+      </div>
+      <div>
+        <SelectionContainer itemKey="Summary"></SelectionContainer>
       </div>
     </>
   );
