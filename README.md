@@ -5,7 +5,9 @@
 ### Important! :
 
 - 3 sections:
-  1. Input Section to input skills, experiences, all the data.
+  1. Input Section to input skills, experiences, all the data.(half-done)
+  - remove the check mark
+  - make one submit button that pushes all changes to 1 state
   2. Selection Section to pick and choose how you want you resume to be.
   3. Selection Section to choose CV to be rendered in a modal (half done)
 - Download the CV as a PDF
