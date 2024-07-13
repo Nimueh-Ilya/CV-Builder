@@ -111,11 +111,7 @@ export default function SelectionContainer({
     return (
       <div>
         <ul>{elements}</ul>
-        <button
-          onClick={() => {
-            console.log(cvListCVs);
-          }}
-        ></button>
+        <button></button>
       </div>
     );
   } else return <div>Error</div>;
