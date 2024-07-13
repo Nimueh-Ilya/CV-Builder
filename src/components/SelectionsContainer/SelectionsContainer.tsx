@@ -1,7 +1,11 @@
-// import { useState } from "react";
+import { useState } from "react";
 import SelectionContainer from "./SelectionContainer";
 export function SelectionsContainer() {
   // const [selectedCV, setSelectedCV] = useState({});
+  const [selectionList, setSelectionList] = useState("Summary");
+  const changeSelectionList = (value: string) => {
+    setSelectionList(value);
+  };
   const cvListKeys = Object.keys(localStorage);
   const cvList = cvListKeys.map((key) => {
     return localStorage.getItem(key);
@@ -17,15 +21,22 @@ export function SelectionsContainer() {
     <div className="grow">
       <div>
         <label htmlFor="containers"></label>
-        <select name="containers" id="containers">
+        <select
+          name="containers"
+          id="containers"
+          value={selectionList}
+          onChange={(e) => {
+            changeSelectionList(e.target.value);
+          }}
+        >
           <option value="Summary">Summary</option>
-          <option value="Eduction">Eduction</option>
+          <option value="Education">Eduction</option>
           <option value="Experience">Experience</option>
           <option value="Skills">Skills</option>
         </select>
       </div>
       <div>
-        <SelectionContainer itemKey="Summary"></SelectionContainer>
+        <SelectionContainer itemKey={selectionList}></SelectionContainer>
       </div>
     </div>
   );
