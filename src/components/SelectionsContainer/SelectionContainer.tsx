@@ -70,8 +70,33 @@ export default function SelectionContainer({
     ));
     return <ul>{elements}</ul>;
   }
-  // if (itemKey === "Experience") {
-  // }
+  if (itemKey === "Experience") {
+    const cvListCVs = cvList.map((item) => {
+      if (item) {
+        return {
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "Title");
+          }),
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "Company");
+          }),
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "StartDate");
+          }),
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "EndDate");
+          }),
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "Role");
+          }),
+          ...item.find((item: object) => {
+            return Object.prototype.hasOwnProperty.call(item, "BulletPoints");
+          }),
+        };
+      }
+    });
+    console.log(cvListCVs);
+  }
   if (itemKey === "Skills") {
     const cvListCVs = cvList.map((item) => {
       if (item) {
