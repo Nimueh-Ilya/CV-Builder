@@ -95,7 +95,34 @@ export default function SelectionContainer({
         };
       }
     });
-    console.log(cvListCVs);
+    const elements = cvListCVs.map((item) => {
+      const bulletPoints = item.BulletPoints.map((entry: object) => {
+        return Object.values(entry);
+      }).flat(1);
+      const bulletPointsList = bulletPoints.map((point: string) => {
+        return (
+          <div>
+            <li key={point}>{point}</li>
+          </div>
+        );
+      });
+      return (
+        <div>
+          <h1>{item.Title}:</h1>
+          <p>{item.Company}</p>
+          <p>{item.Role}</p>
+          <p>{item.StartDate}</p>
+          <p>{item.EndDate}</p>
+          <ul>{bulletPointsList}</ul>
+        </div>
+      );
+    });
+
+    return (
+      <div>
+        <ul>{elements}</ul>
+      </div>
+    );
   }
   if (itemKey === "Skills") {
     const cvListCVs = cvList.map((item) => {
