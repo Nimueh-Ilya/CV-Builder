@@ -3,7 +3,7 @@ import SelectionElement from "./SelectionElement";
 interface SelectionContainerProps {
   itemKey: string;
 }
-
+//TODO: Radios need the same name to group them, change the HTML accordingly
 export default function SelectionContainer({
   itemKey,
 }: SelectionContainerProps) {
