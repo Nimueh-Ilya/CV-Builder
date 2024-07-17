@@ -31,6 +31,7 @@ export default function SelectionContainer({
     const elements = cvListCVs.map((item) => (
       <li key={`${item.Title}${item[itemKey]}`}>
         <SelectionElement
+          inputType="radio"
           title={item.Title}
           content={item[itemKey]}
           key={`${item.Title}${item[itemKey]}`}
@@ -59,6 +60,7 @@ export default function SelectionContainer({
       <div>
         <li key={`${item.Title}${item["School"]}`}>
           <SelectionElement
+            inputType="radio"
             title={item.Title}
             content={item["School"]}
             key={`${item.Title}${item["School"]}`}
@@ -66,6 +68,7 @@ export default function SelectionContainer({
         </li>
         <li key={`${item.Title}${item["Degree"]}`}>
           <SelectionElement
+            inputType="radio"
             title={item.Title}
             content={item["Degree"]}
             key={`${item.Title}${item["Degree"]}`}
@@ -107,17 +110,41 @@ export default function SelectionContainer({
       const bulletPointsList = bulletPoints.map((point: string) => {
         return (
           <div>
-            <li key={point}>{point}</li>
+            <SelectionElement
+              content={point}
+              inputType="radio"
+              title=" "
+              key={point}
+            ></SelectionElement>
           </div>
         );
       });
       return (
         <div>
           <h1>{item.Title}:</h1>
-          <p>{item.Company}</p>
-          <p>{item.Role}</p>
-          <p>{item.StartDate}</p>
-          <p>{item.EndDate}</p>
+          <SelectionElement
+            title=" "
+            content={item.Company}
+            inputType="radio"
+          ></SelectionElement>
+          <SelectionElement
+            key={item.Role}
+            title=" "
+            inputType="radio"
+            content={item.Role}
+          ></SelectionElement>
+          <SelectionElement
+            key={item.StartDate}
+            title=" "
+            inputType="radio"
+            content={item.StartDate}
+          ></SelectionElement>
+          <SelectionElement
+            key={item.EndDate}
+            title=" "
+            inputType="radio"
+            content={item.EndDate}
+          ></SelectionElement>
           <ul>{bulletPointsList}</ul>
         </div>
       );
@@ -155,6 +182,7 @@ export default function SelectionContainer({
           <div>
             <li key={`${item.Title}${skill}`}>
               <SelectionElement
+                inputType="checkbox"
                 title={item.Title}
                 content={skill as string}
                 key={`${item.Title}${skill}`}

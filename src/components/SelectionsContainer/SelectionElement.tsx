@@ -1,14 +1,12 @@
 interface SelectionElementProps {
   title: string;
   content: string;
-  checkedItem: unknown;
   inputType: "radio" | "checkbox";
 }
 
 export default function SelectionElement({
   title,
   content,
-  checkedItem,
   inputType,
 }: SelectionElementProps) {
   return (
@@ -20,8 +18,8 @@ export default function SelectionElement({
       <input
         value={content}
         type={inputType}
-        onChange={(e) => {
-          e.target.checked ? (checkedItem = content) : (checkedItem = null);
+        onChange={() => {
+          console.log("changed");
         }}
       />
     </div>
