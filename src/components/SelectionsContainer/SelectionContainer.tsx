@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import SelectionElement from "./SelectionElement";
 interface SelectionContainerProps {
   itemKey: string;
@@ -7,10 +7,10 @@ interface SelectionContainerProps {
 export default function SelectionContainer({
   itemKey,
 }: SelectionContainerProps) {
-  const [template, setTemplate] = useState({});
-  const addTemplate = (item: object) => {
-    setTemplate((prevTemplate) => ({ ...prevTemplate, item }));
-  };
+  // const [template, setTemplate] = useState({});
+  // const addTemplate = (item: object) => {
+  //   setTemplate((prevTemplate) => ({ ...prevTemplate, item }));
+  // };
   const cvListKeys = Object.keys(localStorage);
   const cvList = cvListKeys.map((key) => {
     return JSON.parse(localStorage.getItem(key)!);
