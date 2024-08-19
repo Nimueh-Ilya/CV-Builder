@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import SelectionElement from "./SelectionElement";
 interface SelectionContainerProps {
   itemKey: string;
@@ -7,6 +7,17 @@ interface SelectionContainerProps {
 export default function SelectionContainer({
   itemKey,
 }: SelectionContainerProps) {
+  const [selectedItems, setSelectedItems] = useState([]);
+  const changeSelectedItems = (item: { title: string; content: string }) => {
+    setSelectedItems((prevData) => ({ ...prevData, item }));
+  };
+  function addSelectedItem(item: { title: string; content: string }) {
+    if (selectedItems.find((value) => value === item) !== undefined) {
+      selectedItems.splice(selectedItems.findIndex((value) => value === item));
+    } else {
+      changeSelectedItems(item);
+    }
+  }
   // const [template, setTemplate] = useState({});
   // const addTemplate = (item: object) => {
   //   setTemplate((prevTemplate) => ({ ...prevTemplate, item }));
@@ -196,7 +207,7 @@ export default function SelectionContainer({
     return (
       <div>
         <ul>{elements}</ul>
-        <button></button>
+        <button>Confirm Selection</button>
       </div>
     );
   } else return <div>Error</div>;
