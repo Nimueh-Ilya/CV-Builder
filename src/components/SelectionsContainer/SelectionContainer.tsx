@@ -3,19 +3,35 @@ import SelectionElement from "./SelectionElement";
 interface SelectionContainerProps {
   itemKey: string;
 }
-//TODO: Radios need the same name to group them, change the HTML accordingly
+interface selectedItemsObject {
+  title: string;
+  content: string;
+}
 export default function SelectionContainer({
   itemKey,
 }: SelectionContainerProps) {
-  const [selectedItems, setSelectedItems] = useState([]);
-  const changeSelectedItems = (item: { title: string; content: string }) => {
-    setSelectedItems((prevData) => ({ ...prevData, item }));
+  const [selectedItems, setSelectedItems] = useState(
+    Array<selectedItemsObject>
+  );
+  const changeSelectedItems = (item: selectedItemsObject) => {
+    setSelectedItems([...selectedItems, item]);
   };
-  function addSelectedItem(item: { title: string; content: string }) {
-    if (selectedItems.find((value) => value === item) !== undefined) {
-      selectedItems.splice(selectedItems.findIndex((value) => value === item));
+  function addSelectedItem(item: selectedItemsObject) {
+    console.log(selectedItems);
+
+    if (
+      selectedItems.find(
+        (value) => value.title == item.title && value.content == item.content
+      )
+    ) {
+      selectedItems.splice(
+        selectedItems.findIndex((value) => value === item),
+        1
+      );
+      console.log(1, selectedItems);
     } else {
       changeSelectedItems(item);
+      console.log(2, selectedItems);
     }
   }
   // const [template, setTemplate] = useState({});
@@ -42,10 +58,10 @@ export default function SelectionContainer({
     const elements = cvListCVs.map((item) => (
       <li key={`${item.Title}${item[itemKey]}`}>
         <SelectionElement
-          inputType="radio"
           title={item.Title}
           content={item[itemKey]}
           key={`${item.Title}${item[itemKey]}`}
+          checkForItems={addSelectedItem}
         ></SelectionElement>
       </li>
     ));
@@ -71,18 +87,18 @@ export default function SelectionContainer({
       <div>
         <li key={`${item.Title}${item["School"]}`}>
           <SelectionElement
-            inputType="radio"
             title={item.Title}
             content={item["School"]}
             key={`${item.Title}${item["School"]}`}
+            checkForItems={addSelectedItem}
           ></SelectionElement>
         </li>
         <li key={`${item.Title}${item["Degree"]}`}>
           <SelectionElement
-            inputType="radio"
             title={item.Title}
             content={item["Degree"]}
             key={`${item.Title}${item["Degree"]}`}
+            checkForItems={addSelectedItem}
           ></SelectionElement>
         </li>
       </div>
@@ -123,9 +139,9 @@ export default function SelectionContainer({
           <div>
             <SelectionElement
               content={point}
-              inputType="radio"
               title=" "
               key={point}
+              checkForItems={addSelectedItem}
             ></SelectionElement>
           </div>
         );
@@ -136,24 +152,24 @@ export default function SelectionContainer({
           <SelectionElement
             title=" "
             content={item.Company}
-            inputType="radio"
+            checkForItems={addSelectedItem}
           ></SelectionElement>
           <SelectionElement
             key={item.Role}
             title=" "
-            inputType="radio"
+            checkForItems={addSelectedItem}
             content={item.Role}
           ></SelectionElement>
           <SelectionElement
             key={item.StartDate}
             title=" "
-            inputType="radio"
+            checkForItems={addSelectedItem}
             content={item.StartDate}
           ></SelectionElement>
           <SelectionElement
             key={item.EndDate}
             title=" "
-            inputType="radio"
+            checkForItems={addSelectedItem}
             content={item.EndDate}
           ></SelectionElement>
           <ul>{bulletPointsList}</ul>
@@ -193,10 +209,10 @@ export default function SelectionContainer({
           <div>
             <li key={`${item.Title}${skill}`}>
               <SelectionElement
-                inputType="checkbox"
                 title={item.Title}
                 content={skill as string}
                 key={`${item.Title}${skill}`}
+                checkForItems={addSelectedItem}
               ></SelectionElement>
             </li>
           </div>

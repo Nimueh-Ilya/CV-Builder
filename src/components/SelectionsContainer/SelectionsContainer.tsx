@@ -6,18 +6,18 @@ export function SelectionsContainer() {
   const changeSelectionList = (value: string) => {
     setSelectionList(value);
   };
-  const cvListKeys = Object.keys(localStorage);
-  const cvList = cvListKeys.map((key) => {
-    return localStorage.getItem(key);
-  });
-  const item1 = JSON.parse(localStorage.getItem("asd")!);
-  if (item1) {
-    const title1 = item1.find((item: object) => {
-      return Object.prototype.hasOwnProperty.call(item, "Summary");
-      title1;
-      cvList;
-    });
-  }
+  // const cvListKeys = Object.keys(localStorage);
+  // const cvList = cvListKeys.map((key) => {
+  //   return localStorage.getItem(key);
+  // });
+  // // const item1 = JSON.parse(localStorage.getItem("asd")!);
+  // // if (item1) {
+  // //   const title1 = item1.find((item: object) => {
+  // //     return Object.prototype.hasOwnProperty.call(item, "Summary");
+  // //     title1;
+  // //     cvList;
+  // //   });
+  // // }
 
   return (
     <div className="grow">

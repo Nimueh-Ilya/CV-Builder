@@ -1,13 +1,13 @@
 interface SelectionElementProps {
   title: string;
   content: string;
-  inputType: "radio" | "checkbox";
+  checkForItems: ({ title, content }) => void;
 }
 
 export default function SelectionElement({
   title,
   content,
-  inputType,
+  checkForItems,
 }: SelectionElementProps) {
   return (
     <div>
@@ -17,9 +17,9 @@ export default function SelectionElement({
       </div>
       <input
         value={content}
-        type={inputType}
+        type={"checkbox"}
         onChange={() => {
-          console.log("changed");
+          checkForItems({ title: title, content: content });
         }}
       />
     </div>
