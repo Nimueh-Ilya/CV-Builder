@@ -1,23 +1,14 @@
 import { useState } from "react";
 import SelectionContainer from "./SelectionContainer";
 export function SelectionsContainer() {
-  // const [selectedCV, setSelectedCV] = useState({});
   const [selectionList, setSelectionList] = useState("Summary");
+  const [cvParts, setCvParts] = useState<unknown>([]);
   const changeSelectionList = (value: string) => {
     setSelectionList(value);
   };
-  // const cvListKeys = Object.keys(localStorage);
-  // const cvList = cvListKeys.map((key) => {
-  //   return localStorage.getItem(key);
-  // });
-  // // const item1 = JSON.parse(localStorage.getItem("asd")!);
-  // // if (item1) {
-  // //   const title1 = item1.find((item: object) => {
-  // //     return Object.prototype.hasOwnProperty.call(item, "Summary");
-  // //     title1;
-  // //     cvList;
-  // //   });
-  // // }
+  const getState = (arg0: unknown[]) => {
+    setCvParts(arg0);
+  };
 
   return (
     <div className="grow">
@@ -38,7 +29,17 @@ export function SelectionsContainer() {
         </select>
       </div>
       <div>
-        <SelectionContainer itemKey={selectionList}></SelectionContainer>
+        <SelectionContainer
+          itemKey={selectionList}
+          sendStateToParent={getState}
+        ></SelectionContainer>
+        <button
+          onClick={() => {
+            localStorage.setItem("mycv", JSON.stringify(cvParts));
+          }}
+        >
+          Confirm Selection
+        </button>
       </div>
     </div>
   );

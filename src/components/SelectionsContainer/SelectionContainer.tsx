@@ -2,6 +2,7 @@ import { useState } from "react";
 import SelectionElement from "./SelectionElement";
 interface SelectionContainerProps {
   itemKey: string;
+  sendStateToParent: (arg0: unknown[]) => void;
 }
 interface selectedItemsObject {
   title: string;
@@ -9,6 +10,7 @@ interface selectedItemsObject {
 }
 export default function SelectionContainer({
   itemKey,
+  sendStateToParent,
 }: SelectionContainerProps) {
   const [selectedItems, setSelectedItems] = useState(
     Array<selectedItemsObject>
@@ -25,14 +27,15 @@ export default function SelectionContainer({
       )
     ) {
       selectedItems.splice(
-        selectedItems.findIndex((value) => value === item),
+        selectedItems.findIndex(
+          (value) => value.title == item.title && value.content == item.content
+        ),
         1
       );
-      console.log(1, selectedItems);
     } else {
       changeSelectedItems(item);
-      console.log(2, selectedItems);
     }
+    sendStateToParent(selectedItems);
   }
   // const [template, setTemplate] = useState({});
   // const addTemplate = (item: object) => {
@@ -223,7 +226,6 @@ export default function SelectionContainer({
     return (
       <div>
         <ul>{elements}</ul>
-        <button>Confirm Selection</button>
       </div>
     );
   } else return <div>Error</div>;
