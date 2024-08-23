@@ -1,7 +1,13 @@
 interface SelectionElementProps {
   title: string;
   content: string;
-  checkForItems: ({ title, content }) => void;
+  checkForItems: ({
+    title,
+    content,
+  }: {
+    title: string;
+    content: string;
+  }) => void;
 }
 
 export default function SelectionElement({
