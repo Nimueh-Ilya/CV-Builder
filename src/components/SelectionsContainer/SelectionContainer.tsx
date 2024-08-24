@@ -37,10 +37,7 @@ export default function SelectionContainer({
     }
     sendStateToParent(selectedItems);
   }
-  // const [template, setTemplate] = useState({});
-  // const addTemplate = (item: object) => {
-  //   setTemplate((prevTemplate) => ({ ...prevTemplate, item }));
-  // };
+
   const cvListKeys = Object.keys(localStorage);
   const cvList = cvListKeys.map((key) => {
     return JSON.parse(localStorage.getItem(key)!);

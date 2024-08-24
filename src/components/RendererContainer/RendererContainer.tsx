@@ -5,6 +5,11 @@ import { Experience } from "./Experience";
 import { Skills } from "./Skills";
 
 export function RendererContainer() {
+  let cvParts;
+  if (localStorage.getItem("mycv") !== null) {
+    cvParts = JSON.parse(localStorage.getItem("mycv")!);
+  }
+
   return (
     <div className="[&>*]:pb-3 p-3 flex-1">
       <h1 className="font-bold text-4xl">
