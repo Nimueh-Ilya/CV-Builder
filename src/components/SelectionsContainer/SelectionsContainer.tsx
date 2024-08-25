@@ -8,6 +8,7 @@ export function SelectionsContainer() {
   };
   const getState = (arg0: unknown[]) => {
     setCvParts(arg0);
+    console.log(arg0);
   };
 
   return (
@@ -35,6 +36,9 @@ export function SelectionsContainer() {
         ></SelectionContainer>
         <button
           onClick={() => {
+            console.log("here");
+            console.log(cvParts);
+
             localStorage.setItem("mycv", JSON.stringify(cvParts));
           }}
         >

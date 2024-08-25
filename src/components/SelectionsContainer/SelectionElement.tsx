@@ -1,6 +1,7 @@
 interface SelectionElementProps {
   title: string;
   content: string;
+  category: string;
   checkForItems: ({
     title,
     content,
@@ -13,6 +14,7 @@ interface SelectionElementProps {
 export default function SelectionElement({
   title,
   content,
+  category,
   checkForItems,
 }: SelectionElementProps) {
   return (
@@ -24,8 +26,8 @@ export default function SelectionElement({
       <input
         value={content}
         type={"checkbox"}
-        onChange={() => {
-          checkForItems({ title: title, content: content });
+        onClick={() => {
+          checkForItems({ title: category, content: content });
         }}
       />
     </div>

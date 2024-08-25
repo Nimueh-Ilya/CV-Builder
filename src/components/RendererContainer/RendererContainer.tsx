@@ -8,10 +8,25 @@ export function RendererContainer() {
   let cvParts;
   if (localStorage.getItem("mycv") !== null) {
     cvParts = JSON.parse(localStorage.getItem("mycv")!);
+    console.log(cvParts);
   }
+  const getElementFromMycvArray = (
+    arrOfObjects: { title: string; content: string }[],
+    element: string
+  ): string => {
+    const foundItem = arrOfObjects.find((item) => item.title === element);
 
+    return foundItem ? foundItem.content : "nothing to see here";
+  };
   return (
     <div className="[&>*]:pb-3 p-3 flex-1">
+      <button
+        onClick={() => {
+          console.log(JSON.parse(localStorage.getItem("mycv")!));
+        }}
+      >
+        Refresh
+      </button>
       <h1 className="font-bold text-4xl">
         {cvdata.headerInfo.firstName} {cvdata.headerInfo.lastName}
       </h1>
@@ -19,7 +34,10 @@ export function RendererContainer() {
         {cvdata.headerInfo.country}, {cvdata.headerInfo.state} |{" "}
         {cvdata.headerInfo.phoneNumber} |{cvdata.headerInfo.email}
       </p>
-      <CVSection title="Summary"></CVSection>
+      <CVSection
+        title="Summary"
+        content={getElementFromMycvArray(cvParts, "Summary")}
+      ></CVSection>
       <CVSection title="Education">
         <Education
           title="Algonquin College"

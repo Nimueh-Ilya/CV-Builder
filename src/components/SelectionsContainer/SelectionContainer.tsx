@@ -62,6 +62,7 @@ export default function SelectionContainer({
           content={item[itemKey]}
           key={`${item.Title}${item[itemKey]}`}
           checkForItems={addSelectedItem}
+          category="Summary"
         ></SelectionElement>
       </li>
     ));
@@ -88,6 +89,7 @@ export default function SelectionContainer({
         <li key={`${item.Title}${item["School"]}`}>
           <SelectionElement
             title={item.Title}
+            category={"School"}
             content={item["School"]}
             key={`${item.Title}${item["School"]}`}
             checkForItems={addSelectedItem}
@@ -97,6 +99,7 @@ export default function SelectionContainer({
           <SelectionElement
             title={item.Title}
             content={item["Degree"]}
+            category={"Degree"}
             key={`${item.Title}${item["Degree"]}`}
             checkForItems={addSelectedItem}
           ></SelectionElement>
@@ -139,6 +142,7 @@ export default function SelectionContainer({
           <div>
             <SelectionElement
               content={point}
+              category={"Experience"}
               title=" "
               key={point}
               checkForItems={addSelectedItem}
@@ -152,6 +156,7 @@ export default function SelectionContainer({
           <SelectionElement
             title=" "
             content={item.Company}
+            category={"company"}
             checkForItems={addSelectedItem}
           ></SelectionElement>
           <SelectionElement
@@ -159,18 +164,21 @@ export default function SelectionContainer({
             title=" "
             checkForItems={addSelectedItem}
             content={item.Role}
+            category={"role"}
           ></SelectionElement>
           <SelectionElement
             key={item.StartDate}
             title=" "
             checkForItems={addSelectedItem}
             content={item.StartDate}
+            category={"start date"}
           ></SelectionElement>
           <SelectionElement
             key={item.EndDate}
             title=" "
             checkForItems={addSelectedItem}
             content={item.EndDate}
+            category={"end date"}
           ></SelectionElement>
           <ul>{bulletPointsList}</ul>
         </div>
@@ -211,6 +219,7 @@ export default function SelectionContainer({
               <SelectionElement
                 title={item.Title}
                 content={skill as string}
+                category="Skill"
                 key={`${item.Title}${skill}`}
                 checkForItems={addSelectedItem}
               ></SelectionElement>
