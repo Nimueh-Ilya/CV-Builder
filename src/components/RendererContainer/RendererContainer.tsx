@@ -43,8 +43,8 @@ export function RendererContainer() {
       ></CVSection>
       <CVSection title="Education">
         <Education
-          title="Algonquin College"
-          date="2024 September-Current"
+          title={getElementFromMycvArray(cvParts, "School")}
+          degree={getElementFromMycvArray(cvParts, "Degree")}
         ></Education>
       </CVSection>
       <CVSection title="Experience">
