@@ -13,7 +13,10 @@ export function RendererContainer() {
   const getElementFromMycvArray = (
     arrOfObjects: { title: string; content: string }[],
     element: string
-  ): string => {
+  ): string | undefined => {
+    if (!arrOfObjects) {
+      return;
+    }
     const foundItem = arrOfObjects.find((item) => item.title === element);
 
     return foundItem ? foundItem.content : "nothing to see here";

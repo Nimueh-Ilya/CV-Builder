@@ -1,14 +1,18 @@
+import { ReactNode } from "react";
+
 interface CVSectionProps {
   title?: string;
-  content: string;
+  content?: string;
+  children?: ReactNode;
 }
-export function CVSection({ title, content }: CVSectionProps) {
+export function CVSection({ title, content, children }: CVSectionProps) {
   if (title && content) {
     return (
       <div className="[&>*]:pb-3">
         <h1 className="text-3xl font-bold">{title}</h1>
         <div className="flex-grow border-t border-gray-400 max-h-0"></div>
         <div>{content}</div>
+        <div>{children}</div>
       </div>
     );
   }
