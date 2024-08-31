@@ -151,7 +151,7 @@ export default function SelectionContainer({
         );
       });
       return (
-        <div>
+        <div className="">
           <h1>{item.Title}:</h1>
           <SelectionElement
             title=" "
