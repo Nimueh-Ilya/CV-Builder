@@ -6,7 +6,7 @@ interface CVSectionProps {
   children?: ReactNode;
 }
 export function CVSection({ title, content, children }: CVSectionProps) {
-  if (title && content) {
+  if (title) {
     return (
       <div className="[&>*]:pb-3">
         <h1 className="text-3xl font-bold">{title}</h1>
